@@ -26,4 +26,4 @@ Set BOOT0 to 1, press Reset button and then:
 
 **shell**: A shell example over serial port. (requires an USB to TTL module).
 
-**cdcacm**: An ACM driver that just echoes. (Only requires an USB **data** cable)
+**cdcacm**: An ACM driver that just echoes. (Only requires an USB **data** cable to communicate, but you still need an USB to TTL module to flash)
