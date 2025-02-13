@@ -4,7 +4,9 @@ My mini projects for stm32f103c8t6 (aka. bluepill).
 
 # Compile
 
-To install toolchain, see toolchain_build_guide.txt
+Install required packages:
+
+`sudo pacman -S arm-none-eabi-gcc libopencm3`
 
 And then:
 
@@ -18,7 +20,7 @@ Set BOOT0 to 1, press Reset button and then:
 
 # Projects
 
-**firmware.bin**: The original blink example in the board.
+**$PROJECT_ROOT/firmware.bin**: The original blink example in the board.
 
 **blink**: A simple blink example.
 
