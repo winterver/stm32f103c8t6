@@ -7,12 +7,8 @@ OBJDUMP	= $(PREFIX)-objdump
 MK_DIR  = $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
 
 # platform specific options
-CFLAGS  += -mcpu=cortex-m3 -mthumb
-LDFLAGS += -mcpu=cortex-m3 -mthumb 
-
-# library options
-CFLAGS  += -I$(MK_DIR)/libopencm3/include -DSTM32F1
-LDFLAGS += -L$(MK_DIR)/libopencm3/lib -lc -T$(MK_DIR)/libopencm3.ld -lopencm3_stm32f1 
+CFLAGS  += -mcpu=cortex-m3 -mthumb -DSTM32F1 
+LDFLAGS += -mcpu=cortex-m3 -mthumb -lc -T$(MK_DIR)/libopencm3.ld -lopencm3_stm32f1 
 
 # general optimization options
 CFLAGS	+= -fno-common -ffunction-sections -fdata-sections
@@ -20,10 +16,7 @@ LDFLAGS	+= -static -nostartfiles -Wl,--gc-sections
 
 OBJECTS = $(patsubst %.c,%.o,$(SOURCES))
 
-all: $(MK_DIR)/libopencm3 $(TARGET).bin
-
-$(MK_DIR)/libopencm3:
-	make -C $(MK_DIR)/libopencm3 TARGETS='stm32/f1'
+all: $(TARGET).bin
 
 $(TARGET).bin: $(TARGET)
 	$(OBJCOPY) -Obinary $(TARGET) $(TARGET).bin
