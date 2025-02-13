@@ -1,11 +1,11 @@
-if you do not want to compile toolchain by your self, simply do:
+if you do not want to compile toolchain by yourself, simply do:
 
 sudo pacman -S arm-none-eabi-gcc arm-none-eabi-newlib libopencm3
 
 this installs about 2GB of files, while a manually compiled toolchain can be
 about just 230mb. follow the steps beneath if you dont want 2GB files:
 
-download binutils and gcc source, extract them to /tmp
+cd /tmp, download binutils and gcc source, extract them.
 cd gcc-14.2.0 then do:
 
 ln -s ../binutils-2.44/bfd bfd
@@ -27,7 +27,7 @@ mv libssp _libssp
 remember to create a build directory, never run configure script in project
 root, this is demanded according to official gnu documentation:
 
-mkdir build && ../configure --target=arm-none-eabi
+mkdir build && ../configure --target=arm-none-eabi --enable-languages=c
 
 and finally:
 
